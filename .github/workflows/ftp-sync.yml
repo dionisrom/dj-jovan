@@ -19,6 +19,23 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y lftp
 
+      - name: Check SFTP connectivity (fast-fail)
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: |
+          set -euo pipefail
+          HOST="${FTP_HOST}"
+          if [ -n "${FTP_PORT}" ]; then
+            HOST="${FTP_HOST}:${FTP_PORT}"
+          fi
+          echo "Checking SFTP connectivity to ${HOST} (remote dir: ${FTP_REMOTE_DIR})"
+          # quick list with short timeouts - will fail fast if auth/protocol/network is wrong
+          lftp -c "set net:timeout 10; set net:max-retries 1; set sftp:auto-confirm yes; open -u ${FTP_USERNAME},${FTP_PASSWORD} sftp://${HOST}; ls -la ${FTP_REMOTE_DIR}; bye"
+
       - name: Sync to FTP (upload new/changed and delete removed files)
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
@@ -34,10 +51,12 @@ jobs:
             HOST="${FTP_HOST}:${FTP_PORT}"
           fi
 
-          # mirror -R : upload local -> remote
+          # mirror -R : upload local -> remote (SFTP)
+          # Use SFTP (port 22) and defensive network timeouts/retries; auto-confirm host key for non-interactive runs
           # --only-newer : transfer only new/changed files (by mtime/size)
           # --delete : remove remote files that are not present locally
-          # exclude common dev files and workflow/git metadata so they are not uploaded
-          # exclude both the directory and its contents, and the .gitignore file
-          lftp -c "set ftp:passive-mode on; open -u ${FTP_USERNAME},${FTP_PASSWORD} ${HOST}; mirror -R --verbose --only-newer --delete --exclude-glob .git --exclude-glob .github --exclude-glob .github/** --exclude-glob .gitignore ./ ${FTP_REMOTE_DIR}; bye"
+          # exclude workflow/git metadata so they are not uploaded
+          timeout 10m lftp -c "set net:timeout 20; set net:max-retries 2; set sftp:auto-confirm yes; set cmd:trace true; open -u ${FTP_USERNAME},${FTP_PASSWORD} sftp://${HOST}; mirror -R --verbose --only-newer --delete --exclude-glob .git --exclude-glob .github --exclude-glob .github/** --exclude-glob .gitignore ./ ${FTP_REMOTE_DIR}; bye" || {
+            rc=$?; echo "lftp exited with code ${rc}"; exit ${rc};
+          }
 
