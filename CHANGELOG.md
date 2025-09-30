@@ -21,7 +21,7 @@ Format:
 - Header: Email icon positioned at the right and vertically centered; original logo styling preserved.
 - GitHub: Created repository `dionisrom/dj-jovan` and pushed initial files and assets.
 - CI/CD: Added GitHub Actions workflow `.github/workflows/ftp-sync.yml` to mirror repo to FTP on new tags and manual dispatch. The workflow excludes `.git`, `.github`, and `.gitignore` from upload.
-- Docs: Added `README.md`, `.gitignore`, and this `changelog.md`.
+- Docs: Added `README.md`, `.gitignore`, and this `CHANGELOG.md`.
 
 ---
 
