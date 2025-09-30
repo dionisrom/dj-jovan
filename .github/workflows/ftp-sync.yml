@@ -1,0 +1,43 @@
+name: FTP Sync
+
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  ftp-sync:
+    name: Sync files to FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Sync to FTP (upload new/changed and delete removed files)
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: |
+          set -euo pipefail
+          echo "Preparing to sync to FTP host: ${FTP_HOST}${FTP_PORT:+:${FTP_PORT}} -> remote dir: ${FTP_REMOTE_DIR}"
+          HOST="${FTP_HOST}"
+          if [ -n "${FTP_PORT}" ]; then
+            HOST="${FTP_HOST}:${FTP_PORT}"
+          fi
+
+          # mirror -R : upload local -> remote
+          # --only-newer : transfer only new/changed files (by mtime/size)
+          # --delete : remove remote files that are not present locally
+          # exclude common dev files and workflow/git metadata so they are not uploaded
+          # exclude both the directory and its contents, and the .gitignore file
+          lftp -c "set ftp:passive-mode on; open -u ${FTP_USERNAME},${FTP_PASSWORD} ${HOST}; mirror -R --verbose --only-newer --delete --exclude-glob .git --exclude-glob .github --exclude-glob .github/** --exclude-glob .gitignore ./ ${FTP_REMOTE_DIR}; bye"
+
