@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Yovan - Official website</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset margins and padding */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Custom styles */            
+        body {
+            font-family: 'Mulish', sans-serif;
+            background-color: #ffffff;
+            position: relative;
+            min-height: 100vh;
+            /* avoid forcing a fixed height so children can size correctly */
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* align to top */
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            max-width: 100vw;
+        }
+        
+        main {
+            /* allow main to expand to fill remaining viewport height inside the flex body */
+            flex: 1 1 auto;
+            min-height: 0; /* allow children to scroll inside */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* align to top */
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
+                
+        /* Styling for the main logo text */
+        .logo-img {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Banner image styling */
+        .banner-container {
+            width: 100vw;
+            max-width: 100vw;
+            min-height:210px;
+            margin-bottom: 1.7rem;
+            height: auto;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+            overflow-y: hidden;
+        }
+        
+        .banner-wrapper {
+            display: block;
+            height: auto;
+            max-height: 450px;
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            max-height: 40%;
+        }
+
+        /* Make the logo container sticky at the top of the main scroll area */
+        .logo-container {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 180;
+            background: rgba(255,255,255,1);
+            /* padding-top: 0.75rem; */
+            /*padding-bottom: 0.5rem;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* allow absolute-positioning of the email icon without changing logo layout */
+            /* box-shadow: 0 2px 8px rgba(0,0,0,0.03); */
+        }
+
+        .follow-me {
+            position: sticky;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+            -webkit-backdrop-filter: blur(8px) saturate(100%);
+            backdrop-filter: blur(8px) saturate(100%);
+            background: rgba(255, 255, 255, 0.85); /* Increased transparency */
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin-top: 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .follow-me .social-icon {
+            margin-top: 5%;
+        }
+
+        .follow-text {
+            color: #4ade80; /* Tailwind green-400 */
+            font-weight: normal;
+            font-size: 2.4rem !important;
+            margin-bottom: 15px;
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #4ade80;
+        }
+
+        .email-icon-link {
+            /* position the email icon absolutely inside the header so we don't touch the logo styles */
+            position: absolute;
+            right: 5%; /* requested 5% right margin */
+            top: 50%;
+            transform: translateY(-50%); /* vertical center */
+            margin-left: 1rem; /* keep a small left spacing if needed */
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+
+        /* Responsive adjustments for the logo */
+        @media (max-width: 768px) {
+            main {
+                padding: 0 0 0 0;
+            }
+
+            .logo-img {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .banner-wrapper {
+                aspect-ratio: 16 / 9; /* Maintain aspect ratio for mobile */
+                height: auto;
+                max-height: none;
+            }
+
+            .banner-container {
+                max-height: 160px;
+                overflow-y: hidden;
+                margin-bottom: 1.7rem;
+            }
+
+            .follow-me {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+
+            .follow-text {
+                font-size: 1.7rem !important;
+                margin-bottom: 5px;
+            }
+
+            .banner-image {
+                max-height: 2500px; /* Further limit height for mobile */
+                object-fit: cover;
+            }
+
+            .social-icon {
+                font-size: 2.3rem;
+            }
+
+            .w-full.max-w-\[350px\] {
+                max-width: 300px !important;
+            }
+
+            /* Reduce the gap between iframe cards on mobile */
+            .embeds-grid {
+                gap: 1rem;
+            }
+
+            .email-icon-link i{
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>    
+
+    <div class="mb-0 flex text-center justify-center logo-container">
+        <img src="./assets/dj-yovan-logo.jpg" alt="DJ Yovan Logo" class="logo-img w-[25%] h-auto">
+        <a href="mailto:djyovan@gmail.com" rel="noopener noreferrer" target="_blank" aria-label="Email" class="email-icon-link"><i class="fas fa-envelope social-icon"></i></a>
+    </div>
+
+    <!-- Main Content -->    
+    <main class="text-center relative">
+        
+        
+        <!-- Image Banner - Responsive with center focus on mobile -->
+        <div class="banner-container">
+            <div class="banner-wrapper">
+                <img src="./assets/dj-yovan.jpg" 
+                     alt="DJ Yovan Banner" 
+                     class="banner-image"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/FFFFFF?text=Image+Not+Found';">
+            </div>
+        </div>  
+
+
+        <div class="w-full px-4">
+        <div id="bandcamp-grid" class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
+            style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
+
+                    <!-- Bandcamp embeds will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        
+
+            </div>
+        </div>
+    </main>
+    
+    <!-- Follow Section - Fixed at bottom -->
+    <div class="follow-me">            
+        <p class="follow-text text-lg md:text-xl">FOLLOW ME</p>
+        <div class="flex items-center justify-center md:space-x-6 space-x-8">
+            <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram social-icon"></i></a>
+            <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud social-icon"></i></a>
+            <a href="https://www.mixcloud.com/djyovan" rel="noopener noreferrer" target="_blank" aria-label="Mixcloud"><i class="fa-brands fa-mixcloud social-icon"></i></a>
+            <a href="https://www.youtube.com/@djyovan" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube social-icon"></i></a>
+            <a href="https://djyovan.bandcamp.com/" rel="noopener noreferrer" target="_blank" aria-label="Bandcamp"><i class="fa-brands fa-bandcamp social-icon"></i></a>
+        </div>
+    </div>
+
+    <script>
+        /*
+        * Bandcamp track data array. Each object should contain:
+        * { iframeTitle, playerSource, songUrl, songName }
+        */
+        const bandcampTracks = [
+            {
+                iframeTitle: "Bandcamp Player - Parranda (2025 Revival) by DJ YOVAN",
+                playerSource: "https://bandcamp.com/EmbeddedPlayer/track=1423690215/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
+                songUrl: "https://djyovan.bandcamp.com/track/parranda-2025-revival",
+                songName: "Parranda (2025 Revival) by DJ YOVAN"
+            }
+        ];
+
+        // Helper to create a single embed element
+        function createBandcampEmbed(track) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'w-full max-w-[350px]';
+
+            const iframe = document.createElement('iframe');
+            iframe.title = track.iframeTitle || '';
+            iframe.style.border = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '442px';
+            iframe.src = track.playerSource || '';
+            iframe.setAttribute('seamless', '');
+            iframe.setAttribute('loading', 'lazy');
+
+            // Bandcamp also has a fallback anchor inside the iframe element in the original markup
+            const anchor = document.createElement('a');
+            anchor.href = track.songUrl || '#';
+            anchor.textContent = track.songName || '';
+
+            // Append the anchor into the iframe element as fallback text (this matches original static markup)
+            iframe.appendChild(anchor);
+            wrapper.appendChild(iframe);
+
+            return wrapper;
+        }
+
+        // Render all tracks into the grid
+        function renderBandcampTracks() {
+            const grid = document.getElementById('bandcamp-grid');
+            if (!grid) return;
+            // Clear existing
+            grid.innerHTML = '';
+            bandcampTracks.forEach(track => {
+                grid.appendChild(createBandcampEmbed(track));
+            });
+        }
+
+        // Public helper to add a track and re-render
+        function addBandcampTrack(trackObj) {
+            bandcampTracks.push(trackObj);
+            renderBandcampTracks();
+        }
+
+        // Initial render on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', renderBandcampTracks);
+    </script>
+</body>
+</html>

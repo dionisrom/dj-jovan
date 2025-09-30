@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Yovan - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset margins and padding */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Custom styles */            
+        body {
+            font-family: 'Mulish', sans-serif;
+            background-color: #ffffff;
+            position: relative;
+            min-height: 100vh;
+            height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Changed from center to flex-start to align to top */
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            max-width: 100vw;
+        }        
+        
+        main {
+            max-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Changed from center to flex-start to align to top */
+            padding-top: 60px; /* Maintains space for the coming-soon div */
+            padding-bottom: 4rem;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+            padding-top: 60px; /* Space for the coming-soon div */
+        }
+
+        .coming-soon {
+            text-align: center;
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .coming-soon p {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .follow-me {
+            position: relative;
+            margin-top: 4rem;
+        }
+        .follow-text {
+            margin-bottom: 5%;
+        }
+        
+        .follow-me .social-icon {
+            margin-top: 5%;
+        }
+        
+        /* Styling for the main logo text */
+        .logo-img {
+            margin-top: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Banner image styling */
+        .banner-container {
+            width: 100vw;
+            max-width: 100vw;
+            min-height:210px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .banner-wrapper {
+            height: auto;
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            max-height: 40%;
+        }
+
+        .heading-text {
+            color: #A0A0A0;
+            line-height: 100% !important;
+            font-size: 1.6rem !important;
+        }
+
+        .subheading-text {
+            color: #4ade80; /* Tailwind green-400 */
+            line-height: 100% !important;
+            font-size: 2.4rem !important;
+        }
+
+        .follow-text {
+            color: #4ade80; /* Tailwind green-400 */
+            font-weight: normal;
+            font-size: 2.4rem !important;
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #4ade80;
+        }
+
+        /* Responsive adjustments for the logo */
+        @media (max-width: 768px) {
+            main {
+                padding: 25px 0 0 0;
+            }
+
+            .heading-text {
+                font-size: 1.1rem !important; /* Adjusted for smaller screens */
+            }
+
+            .subheading-text {
+                font-size: 1.7rem !important; /* Adjusted for smaller screens */
+            }
+
+            .logo-img {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .banner-wrapper {
+                aspect-ratio: 16 / 9; /* Maintain aspect ratio for mobile */
+                height: auto;
+            }
+
+            .follow-me {
+                position: relative;
+                margin-top: 1rem;
+            }
+
+            .follow-text {
+                font-size: 1.7rem !important;
+            }
+
+            .banner-image {
+                max-height: 2500px; /* Further limit height for mobile */
+                object-fit: cover;
+            }
+
+            .social-icon {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>    <!-- Main Content -->    
+    <main class="text-center relative">
+          <!-- Top Text - Positioned at top of main -->
+        <div class="coming-soon">
+            <p class="heading-text text-sm md:text-base">UNDER CONSTRUCTION</p>
+            <p class="subheading-text text-lg md:text-xl">COMING SOON</p>
+        </div>      
+
+        <div class="mb-6 flex justify-center">
+            <img src="./assets/dj-yovan-logo.jpg" alt="DJ Yovan Logo" class="logo-img w-[70%] h-auto">
+        </div>
+        
+        <!-- Image Banner - Responsive with center focus on mobile -->
+        <div class="banner-container">
+            <div class="banner-wrapper">
+                <img src="./assets/dj-yovan.jpg" 
+                     alt="DJ Yovan Banner" 
+                     class="banner-image"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/FFFFFF?text=Image+Not+Found';">
+            </div>
+        </div>        
+        
+        <!-- Follow Section - Fixed at bottom -->
+        <div class="follow-me">            
+            <p class="follow-text text-lg md:text-xl mb-[5%]">FOLLOW ME</p>
+            <div class="flex items-center justify-center md:space-x-6 space-x-8">
+                <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+                <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank" aria-label="SoundCloud"><i class="fab fa-soundcloud social-icon"></i></a>
+                <a href="https://www.mixcloud.com/djyovan" rel="noopener noreferrer" target="_blank" aria-label="Mixcloud"><i class="fab fa-mixcloud social-icon"></i></a>
+                <a href="https://www.youtube.com/@djyovan" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
+                <a href="mailto:djyovan@gmail.com" rel="noopener noreferrer" target="_blank" aria-label="Email"><i class="fas fa-envelope social-icon"></i></a>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
