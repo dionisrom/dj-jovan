@@ -29,6 +29,12 @@ Format:
 
 - CI: Reworked deployment workflow to use SFTP on port 22. Added a pre-sync connectivity check, timeouts, retries and verbose tracing to the lftp command so deployment fails fast and provides useful diagnostics when auth/TLS/network issues occur. (file: `.github/workflows/ftp-sync.yml`)
 
+---
+
+## v0.1.2 — 2025-09-30 — Recovered the logo and the banner images
+
+- Site: Recovered the (file: `assets/dj-yovan-logo.jpg`) and (file: `assets/dj-yovan-logo.jpg`) image files. they got corrupted at one point.
+
 
 ## Release template
 
