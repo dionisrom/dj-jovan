@@ -10,7 +10,7 @@ Format:
 
 ## [Unreleased]
 
-- Pending: Add release notes here before creating the release/tag.
+- Pending: (no changes)
 
 ---
 
@@ -24,6 +24,11 @@ Format:
 - Docs: Added `README.md`, `.gitignore`, and this `CHANGELOG.md`.
 
 ---
+
+## v0.1.1 — 2025-09-29 — Use SFTP for deployment and add diagnostics
+
+- CI: Reworked deployment workflow to use SFTP on port 22. Added a pre-sync connectivity check, timeouts, retries and verbose tracing to the lftp command so deployment fails fast and provides useful diagnostics when auth/TLS/network issues occur. (file: `.github/workflows/ftp-sync.yml`)
+
 
 ## Release template
 
