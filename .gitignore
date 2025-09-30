@@ -1,0 +1,15 @@
+# Node / dev files
+node_modules/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Thumbnails
+Thumbs.db
