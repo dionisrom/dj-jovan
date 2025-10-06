@@ -34,8 +34,8 @@
             justify-content: flex-start; /* align to top */
             margin: 0;
             padding: 0;
-            width: 100vw;
-            max-width: 100vw;
+            width: 100%;
+            max-width: 100%;
         }
         
         main {
@@ -48,7 +48,7 @@
             align-items: center;
             justify-content: flex-start; /* align to top */
             width: 100%;
-            max-width: 100vw;
+            max-width: 100%;
             position: relative;
         }
                 
@@ -60,9 +60,10 @@
 
         /* Banner image styling */
         .banner-container {
-            width: 100vw;
-            max-width: 100vw;
-            min-height:210px;
+            width: 100%;
+            max-width: 100%;
+            min-height: 170px;
+            max-height: 30vh;
             margin-bottom: 1.7rem;
             height: auto;
             margin-left: 0;
@@ -86,21 +87,25 @@
             max-height: 40%;
         }
 
-        /* Make the logo container sticky at the top of the main scroll area */
-        .logo-container {
+        /* Sticky glassmorphism header for logo */
+        .site-header {
             position: sticky;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 180;
-            background: rgba(255,255,255,1);
-            /* padding-top: 0.75rem; */
-            /*padding-bottom: 0.5rem;*/
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .logo-container {
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative; /* allow absolute-positioning of the email icon without changing logo layout */
-            /* box-shadow: 0 2px 8px rgba(0,0,0,0.03); */
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
 
         .follow-me {
@@ -108,12 +113,12 @@
             text-align: center;
             bottom: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             z-index: 200;
             -webkit-backdrop-filter: blur(8px) saturate(100%);
             backdrop-filter: blur(8px) saturate(100%);
             background: rgba(255, 255, 255, 0.85); /* Increased transparency */
-            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+            box-shadow: 0 -4px 24px 0 rgba(0,0,0,0.07);
             border-top: 1px solid rgba(255,255,255,0.3);
             margin-top: 0;
             padding-top: 1rem;
@@ -128,10 +133,16 @@
             color: #4ade80; /* Tailwind green-400 */
             font-weight: normal;
             font-size: 2.4rem !important;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
         }
 
         .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            height: 1em;
             font-size: 3rem;
             color: #000000;
             transition: color 0.3s ease;
@@ -150,6 +161,10 @@
             margin-left: 1rem; /* keep a small left spacing if needed */
             color: #000000;
             transition: color 0.3s ease;
+        }
+
+        .fa-envelope {
+            font-size: 1.75rem;
         }
 
 
@@ -176,6 +191,11 @@
                 margin-bottom: 1.7rem;
             }
 
+            .logo-container {
+                padding-top: 0.2rem;
+                padding-bottom: 0.2rem;
+            }
+
             .follow-me {
                 padding-top: 0.5rem;
                 padding-bottom: 0.5rem;
@@ -199,23 +219,29 @@
                 max-width: 300px !important;
             }
 
+            .logo-img.w-\[10\%\] {
+                width: 15% !important;
+            }
+
             /* Reduce the gap between iframe cards on mobile */
             .embeds-grid {
                 gap: 1rem;
             }
 
             .email-icon-link i{
-                font-size: 1.5rem;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>    
 
-    <div class="mb-0 flex text-center justify-center logo-container">
-        <img src="./assets/dj-yovan-logo.jpg" alt="DJ Yovan Logo" class="logo-img w-[25%] h-auto">
-        <a href="mailto:djyovan@gmail.com" rel="noopener noreferrer" target="_blank" aria-label="Email" class="email-icon-link"><i class="fas fa-envelope social-icon"></i></a>
-    </div>
+    <header class="site-header">
+        <div class="mb-0 flex text-center justify-center logo-container">
+            <img src="./assets/dj-yovan-logo.jpg" alt="DJ Yovan Logo" class="logo-img w-[10%] h-auto">
+            <a href="mailto:djyovan@gmail.com" rel="noopener noreferrer" target="_blank" aria-label="Email" class="email-icon-link"><i class="fas fa-envelope social-icon"></i></a>
+        </div>
+    </header>
 
     <!-- Main Content -->    
     <main class="text-center relative">
@@ -233,16 +259,10 @@
 
 
         <div class="w-full px-4">
-        <div id="bandcamp-grid" class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
-            style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
+            <div id="bandcamp-grid" class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
+                style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
 
-                    <!-- Bandcamp embeds will be rendered here by JavaScript -->
-                </div>
-            </div>
-        </main>
-
-        
-
+                <!-- Bandcamp embeds will be rendered here by JavaScript -->
             </div>
         </div>
     </main>
