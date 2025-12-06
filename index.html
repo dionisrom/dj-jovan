@@ -272,11 +272,13 @@
 
 
         <div class="w-full px-4">
-            <div id="spotify-grid"
+            <div id="spotify-promo-grid"
                 class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center mb-10"
                 style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
-                <!-- Spotify embeds will be rendered here by JavaScript -->
+                <!-- Spotify Promo Cards will be rendered here by JavaScript -->
             </div>
+
+
 
             <div id="bandcamp-grid"
                 class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
@@ -290,7 +292,7 @@
     <!-- Follow Section - Fixed at bottom -->
     <div class="follow-me">
         <p class="follow-text text-lg md:text-xl">FOLLOW ME</p>
-        <div class="flex items-center justify-center md:space-x-6 space-x-8">
+        <div class="flex items-center justify-evenly w-full gap-3 md:justify-center md:gap-6">
             <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank"
                 aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
             <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank"
@@ -301,18 +303,21 @@
                     class="fab fa-youtube social-icon"></i></a>
             <a href="https://djyovan.bandcamp.com/" rel="noopener noreferrer" target="_blank" aria-label="Bandcamp"><i
                     class="fa-brands fa-bandcamp social-icon"></i></a>
+            <a href="https://open.spotify.com/artist/48sTmiJCQ2nRbgjxBj8Q1T" rel="noopener noreferrer" target="_blank"
+                aria-label="Spotify"><i class="fa-brands fa-spotify social-icon"></i></a>
         </div>
     </div>
 
     <script>
         /*
-        * Spotify track data array.
+        * Spotify Promo Cards data array.
         */
-        const spotifyTracks = [
+        const spotifyPromoCards = [
             {
-                iframeTitle: "Spotify Player - But You (Radio Edit)",
-                playerSource: "https://open.spotify.com/embed/track/30gM7bTyup1W8aTJm0rlvh?utm_source=generator",
-                songName: "But You (Radio Edit)"
+                imageUrl: "https://i.scdn.co/image/ab67616d00001e02cf76bd542677515fe0a0b5e4",
+                linkUrl: "https://open.spotify.com/track/30gM7bTyup1W8aTJm0rlvh",
+                audioUrl: "https://p.scdn.co/mp3-preview/11ca5db9ee16d3f6a58b3512981c40c75ba48452",
+                title: "But You (Radio Edit) - Spotify Promo"
             }
         ];
 
@@ -329,25 +334,94 @@
             }
         ];
 
-        // Helper to create a single Spotify embed element
-        function createSpotifyEmbed(track) {
+        // Helper to create a single Spotify Promo Card embed element
+        function createSpotifyPromoEmbed(card) {
             const wrapper = document.createElement('div');
-            wrapper.className = 'w-full max-w-[350px]';
+            wrapper.className = 'w-full max-w-[350px] relative group';
 
-            const iframe = document.createElement('iframe');
-            iframe.style.borderRadius = "12px";
-            iframe.src = track.playerSource;
-            iframe.width = "100%";
-            iframe.height = "352";
-            iframe.frameBorder = "0";
-            iframe.allowFullscreen = "";
-            iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-            iframe.loading = "lazy";
-            iframe.title = track.iframeTitle;
+            const link = document.createElement('a');
+            link.href = card.linkUrl;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.className = "block w-full h-auto hover:opacity-90 transition-opacity";
 
-            wrapper.appendChild(iframe);
+            const img = document.createElement('img');
+            img.src = card.imageUrl;
+            img.alt = card.title;
+            img.className = "w-full h-auto rounded-xl shadow-lg";
+
+            link.appendChild(img);
+            wrapper.appendChild(link);
+
+            // Spotify Logo Link (Bottom Left)
+            const spotifyLogoLink = document.createElement('a');
+            spotifyLogoLink.href = card.linkUrl;
+            spotifyLogoLink.target = "_blank";
+            spotifyLogoLink.rel = "noopener noreferrer";
+            spotifyLogoLink.className = "absolute bottom-4 left-4 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all transform hover:scale-110 z-10 backdrop-blur-sm";
+            spotifyLogoLink.setAttribute('aria-label', "Open in Spotify");
+
+            const spotifyIcon = document.createElement('i');
+            spotifyIcon.className = "fab fa-spotify text-2xl text-[#1DB954]";
+            spotifyLogoLink.appendChild(spotifyIcon);
+            wrapper.appendChild(spotifyLogoLink);
+
+            if (card.audioUrl) {
+                const audio = new Audio(card.audioUrl);
+
+                const button = document.createElement('button');
+                // Square button, bottom right, green
+                button.className = "absolute bottom-4 right-4 w-12 h-12 bg-[#1DB954] hover:bg-[#1ed760] text-white rounded shadow-lg flex items-center justify-center transition-all transform hover:scale-105 z-10 focus:outline-none cursor-pointer border-none";
+                button.setAttribute('aria-label', 'Play preview');
+
+                const icon = document.createElement('i');
+                icon.className = "fas fa-play text-xl";
+                button.appendChild(icon);
+
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (audio.paused) {
+                        // Pause all other audios
+                        document.querySelectorAll('audio').forEach(a => {
+                            if (a !== audio) {
+                                a.pause();
+                                // Reset their buttons if I had access to them easily, 
+                                // but since I'm creating them dynamically, I might need a global way or just let them be.
+                                // For this specific implementation, let's just play this one.
+                            }
+                        });
+
+                        audio.play();
+                        icon.className = "fas fa-pause text-xl";
+                    } else {
+                        audio.pause();
+                        icon.className = "fas fa-play text-xl";
+                    }
+                });
+
+                audio.addEventListener('ended', () => {
+                    icon.className = "fas fa-play text-xl";
+                });
+
+                wrapper.appendChild(button);
+            }
+
             return wrapper;
         }
+
+        // Render all Spotify Promo Cards into the grid
+        function renderSpotifyPromoCards() {
+            const grid = document.getElementById('spotify-promo-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            spotifyPromoCards.forEach(card => {
+                grid.appendChild(createSpotifyPromoEmbed(card));
+            });
+        }
+
+
 
         // Helper to create a single Bandcamp embed element
         function createBandcampEmbed(track) {
@@ -375,15 +449,7 @@
             return wrapper;
         }
 
-        // Render all Spotify tracks into the grid
-        function renderSpotifyTracks() {
-            const grid = document.getElementById('spotify-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            spotifyTracks.forEach(track => {
-                grid.appendChild(createSpotifyEmbed(track));
-            });
-        }
+
 
         // Render all Bandcamp tracks into the grid
         function renderBandcampTracks() {
@@ -409,7 +475,8 @@
         }
         // Initial render on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
-            renderSpotifyTracks();
+            renderSpotifyPromoCards();
+
             renderBandcampTracks();
         });
     </script>
