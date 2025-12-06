@@ -372,7 +372,7 @@
                 const button = document.createElement('button');
                 // Square button, bottom right, green
                 button.className = "absolute bottom-4 right-4 w-12 h-12 bg-[#1DB954] hover:bg-[#1ed760] text-white rounded shadow-lg flex items-center justify-center transition-all transform hover:scale-105 z-10 focus:outline-none cursor-pointer border-none";
-                button.ariaLabel = "Play preview";
+                button.setAttribute('aria-label', 'Play preview');
 
                 const icon = document.createElement('i');
                 icon.className = "fas fa-play text-xl";
