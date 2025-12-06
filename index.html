@@ -359,7 +359,7 @@
             spotifyLogoLink.target = "_blank";
             spotifyLogoLink.rel = "noopener noreferrer";
             spotifyLogoLink.className = "absolute bottom-4 left-4 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all transform hover:scale-110 z-10 backdrop-blur-sm";
-            spotifyLogoLink.ariaLabel = "Open in Spotify";
+            spotifyLogoLink.setAttribute('aria-label', "Open in Spotify");
 
             const spotifyIcon = document.createElement('i');
             spotifyIcon.className = "fab fa-spotify text-2xl text-[#1DB954]";
