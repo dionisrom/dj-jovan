@@ -402,6 +402,11 @@
             renderBandcampTracks();
         }
 
+        // Public helper to add a Spotify track and re-render
+        function addSpotifyTrack(trackObj) {
+            spotifyTracks.push(trackObj);
+            renderSpotifyTracks();
+        }
         // Initial render on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             renderSpotifyTracks();
