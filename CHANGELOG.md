@@ -9,6 +9,13 @@ Format:
 
 ---
 
+## v0.1.4 — 2025-12-05 — Added Spotify Promo Card support
+
+- Feature: Added a new Spotify grid section above the Bandcamp grid to allow displaying Spotify promo cards. (file: `index.html`)
+- Content: Added the "But You (Radio Edit)" Spotify promo card to the new grid. (file: `index.html`)
+
+---
+
 ## v0.1.3 — 2025-10-05 — Fixed mobile layout issues and made the header sticky
 
 - UI: Wrapped the logo in a dedicated sticky header, tweaked the footer social icons, and tightened container widths to remove accidental horizontal scrolling on mobile without altering layout visuals. (file: `index.html`)

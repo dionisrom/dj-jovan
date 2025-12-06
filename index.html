@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <style>
         /* Reset margins and padding */
         * {
@@ -20,8 +22,8 @@
             margin: 0;
             padding: 0;
         }
-        
-        /* Custom styles */            
+
+        /* Custom styles */
         body {
             font-family: 'Mulish', sans-serif;
             background-color: #ffffff;
@@ -31,27 +33,30 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* align to top */
+            justify-content: flex-start;
+            /* align to top */
             margin: 0;
             padding: 0;
             width: 100%;
             max-width: 100%;
         }
-        
+
         main {
             /* allow main to expand to fill remaining viewport height inside the flex body */
             flex: 1 1 auto;
-            min-height: 0; /* allow children to scroll inside */
+            min-height: 0;
+            /* allow children to scroll inside */
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* align to top */
+            justify-content: flex-start;
+            /* align to top */
             width: 100%;
             max-width: 100%;
             position: relative;
         }
-                
+
         /* Styling for the main logo text */
         .logo-img {
             margin-top: 1rem;
@@ -72,13 +77,13 @@
             padding-right: 0;
             overflow-y: hidden;
         }
-        
+
         .banner-wrapper {
             display: block;
             height: auto;
             max-height: 450px;
         }
-        
+
         .banner-image {
             width: 100%;
             height: 100%;
@@ -103,7 +108,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative; /* allow absolute-positioning of the email icon without changing logo layout */
+            position: relative;
+            /* allow absolute-positioning of the email icon without changing logo layout */
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
         }
@@ -117,20 +123,22 @@
             z-index: 200;
             -webkit-backdrop-filter: blur(8px) saturate(100%);
             backdrop-filter: blur(8px) saturate(100%);
-            background: rgba(255, 255, 255, 0.85); /* Increased transparency */
-            box-shadow: 0 -4px 24px 0 rgba(0,0,0,0.07);
-            border-top: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.85);
+            /* Increased transparency */
+            box-shadow: 0 -4px 24px 0 rgba(0, 0, 0, 0.07);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             margin-top: 0;
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-        
+
         .follow-me .social-icon {
             margin-top: 5%;
         }
 
         .follow-text {
-            color: #4ade80; /* Tailwind green-400 */
+            color: #4ade80;
+            /* Tailwind green-400 */
             font-weight: normal;
             font-size: 2.4rem !important;
             margin-bottom: 10px;
@@ -155,10 +163,13 @@
         .email-icon-link {
             /* position the email icon absolutely inside the header so we don't touch the logo styles */
             position: absolute;
-            right: 5%; /* requested 5% right margin */
+            right: 5%;
+            /* requested 5% right margin */
             top: 50%;
-            transform: translateY(-50%); /* vertical center */
-            margin-left: 1rem; /* keep a small left spacing if needed */
+            transform: translateY(-50%);
+            /* vertical center */
+            margin-left: 1rem;
+            /* keep a small left spacing if needed */
             color: #000000;
             transition: color 0.3s ease;
         }
@@ -180,7 +191,8 @@
             }
 
             .banner-wrapper {
-                aspect-ratio: 16 / 9; /* Maintain aspect ratio for mobile */
+                aspect-ratio: 16 / 9;
+                /* Maintain aspect ratio for mobile */
                 height: auto;
                 max-height: none;
             }
@@ -207,7 +219,8 @@
             }
 
             .banner-image {
-                max-height: 2500px; /* Further limit height for mobile */
+                max-height: 2500px;
+                /* Further limit height for mobile */
                 object-fit: cover;
             }
 
@@ -228,58 +241,81 @@
                 gap: 1rem;
             }
 
-            .email-icon-link i{
+            .email-icon-link i {
                 font-size: 1rem;
             }
         }
     </style>
 </head>
-<body>    
+
+<body>
 
     <header class="site-header">
         <div class="mb-0 flex text-center justify-center logo-container">
             <img src="./assets/dj-yovan-logo.jpg" alt="DJ Yovan Logo" class="logo-img w-[10%] h-auto">
-            <a href="mailto:djyovan@gmail.com" rel="noopener noreferrer" target="_blank" aria-label="Email" class="email-icon-link"><i class="fas fa-envelope social-icon"></i></a>
+            <a href="mailto:djyovan@gmail.com" rel="noopener noreferrer" target="_blank" aria-label="Email"
+                class="email-icon-link"><i class="fas fa-envelope social-icon"></i></a>
         </div>
     </header>
 
-    <!-- Main Content -->    
+    <!-- Main Content -->
     <main class="text-center relative">
-        
-        
+
+
         <!-- Image Banner - Responsive with center focus on mobile -->
         <div class="banner-container">
             <div class="banner-wrapper">
-                <img src="./assets/dj-yovan.jpg" 
-                     alt="DJ Yovan Banner" 
-                     class="banner-image"
-                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/FFFFFF?text=Image+Not+Found';">
+                <img src="./assets/dj-yovan.jpg" alt="DJ Yovan Banner" class="banner-image"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/FFFFFF?text=Image+Not+Found';">
             </div>
-        </div>  
+        </div>
 
 
         <div class="w-full px-4">
-            <div id="bandcamp-grid" class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
+            <div id="spotify-grid"
+                class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center mb-10"
+                style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
+                <!-- Spotify embeds will be rendered here by JavaScript -->
+            </div>
+
+            <div id="bandcamp-grid"
+                class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
                 style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
 
                 <!-- Bandcamp embeds will be rendered here by JavaScript -->
             </div>
         </div>
     </main>
-    
+
     <!-- Follow Section - Fixed at bottom -->
-    <div class="follow-me">            
+    <div class="follow-me">
         <p class="follow-text text-lg md:text-xl">FOLLOW ME</p>
         <div class="flex items-center justify-center md:space-x-6 space-x-8">
-            <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
-            <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank" aria-label="SoundCloud"><i class="fab fa-soundcloud social-icon"></i></a>
-            <a href="https://www.mixcloud.com/djyovan" rel="noopener noreferrer" target="_blank" aria-label="Mixcloud"><i class="fab fa-mixcloud social-icon"></i></a>
-            <a href="https://www.youtube.com/@djyovan" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
-            <a href="https://djyovan.bandcamp.com/" rel="noopener noreferrer" target="_blank" aria-label="Bandcamp"><i class="fa-brands fa-bandcamp social-icon"></i></a>
+            <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank"
+                aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+            <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank"
+                aria-label="SoundCloud"><i class="fab fa-soundcloud social-icon"></i></a>
+            <a href="https://www.mixcloud.com/djyovan" rel="noopener noreferrer" target="_blank"
+                aria-label="Mixcloud"><i class="fab fa-mixcloud social-icon"></i></a>
+            <a href="https://www.youtube.com/@djyovan" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><i
+                    class="fab fa-youtube social-icon"></i></a>
+            <a href="https://djyovan.bandcamp.com/" rel="noopener noreferrer" target="_blank" aria-label="Bandcamp"><i
+                    class="fa-brands fa-bandcamp social-icon"></i></a>
         </div>
     </div>
 
     <script>
+        /*
+        * Spotify track data array.
+        */
+        const spotifyTracks = [
+            {
+                iframeTitle: "Spotify Player - But You (Radio Edit)",
+                playerSource: "https://open.spotify.com/embed/track/30gM7bTyup1W8aTJm0rlvh?utm_source=generator",
+                songName: "But You (Radio Edit)"
+            }
+        ];
+
         /*
         * Bandcamp track data array. Each object should contain:
         * { iframeTitle, playerSource, songUrl, songName }
@@ -293,7 +329,27 @@
             }
         ];
 
-        // Helper to create a single embed element
+        // Helper to create a single Spotify embed element
+        function createSpotifyEmbed(track) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'w-full max-w-[350px]';
+
+            const iframe = document.createElement('iframe');
+            iframe.style.borderRadius = "12px";
+            iframe.src = track.playerSource;
+            iframe.width = "100%";
+            iframe.height = "352";
+            iframe.frameBorder = "0";
+            iframe.allowFullscreen = "";
+            iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+            iframe.loading = "lazy";
+            iframe.title = track.iframeTitle;
+
+            wrapper.appendChild(iframe);
+            return wrapper;
+        }
+
+        // Helper to create a single Bandcamp embed element
         function createBandcampEmbed(track) {
             const wrapper = document.createElement('div');
             wrapper.className = 'w-full max-w-[350px]';
@@ -319,7 +375,17 @@
             return wrapper;
         }
 
-        // Render all tracks into the grid
+        // Render all Spotify tracks into the grid
+        function renderSpotifyTracks() {
+            const grid = document.getElementById('spotify-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            spotifyTracks.forEach(track => {
+                grid.appendChild(createSpotifyEmbed(track));
+            });
+        }
+
+        // Render all Bandcamp tracks into the grid
         function renderBandcampTracks() {
             const grid = document.getElementById('bandcamp-grid');
             if (!grid) return;
@@ -337,7 +403,11 @@
         }
 
         // Initial render on DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', renderBandcampTracks);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSpotifyTracks();
+            renderBandcampTracks();
+        });
     </script>
 </body>
+
 </html>
