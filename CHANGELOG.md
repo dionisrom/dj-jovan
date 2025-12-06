@@ -8,6 +8,13 @@ Format:
   - Category: Description (files changed or important notes)
 ---
 
+## v0.1.6 — 2025-12-05 — UI Polish for Social Icons
+
+- UI: Improved spacing of footer social icons on mobile for better alignment. (file: `index.html`)
+- UI: Adjusted the Spotify icon margin to reduce the gap between it and the Bandcamp icon. (file: `index.html`)
+
+---
+
 ## v0.1.5 — 2025-12-05 — Added a custom Spotify Promo Card
 
 - Feature: Added a custom Spotify Promo Card to the page. (file: `index.html`)
