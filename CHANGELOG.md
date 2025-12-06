@@ -6,10 +6,17 @@ Always the latest changes are on top, so the version history is in reverse chron
 Format:
 ## vX.Y.Z — YYYY-MM-DD — Short title
   - Category: Description (files changed or important notes)
+---
+
+## v0.1.5 — 2025-12-05 — Added a custom Spotify Promo Card
+
+- Feature: Added a custom Spotify Promo Card to the page. (file: `index.html`)
+- Content: Added the "But You (Radio Edit)" Spotify promo card to the new grid. (file: `index.html`)
+- Added the Spotify logo to the footer. (file: `index.html`)
 
 ---
 
-## v0.1.4 — 2025-12-05 — Added Spotify Promo Card support
+## v0.1.4 — 2025-12-05 — Added Spotify Promo Card support and a new card for But You (Radio Edit)
 
 - Feature: Added a new Spotify grid section above the Bandcamp grid to allow displaying Spotify promo cards. (file: `index.html`)
 - Content: Added the "But You (Radio Edit)" Spotify promo card to the new grid. (file: `index.html`)

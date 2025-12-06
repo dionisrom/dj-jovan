@@ -278,11 +278,7 @@
                 <!-- Spotify Promo Cards will be rendered here by JavaScript -->
             </div>
 
-            <div id="spotify-grid"
-                class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center mb-10"
-                style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
-                <!-- Spotify embeds will be rendered here by JavaScript -->
-            </div>
+
 
             <div id="bandcamp-grid"
                 class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
@@ -296,7 +292,7 @@
     <!-- Follow Section - Fixed at bottom -->
     <div class="follow-me">
         <p class="follow-text text-lg md:text-xl">FOLLOW ME</p>
-        <div class="flex items-center justify-center md:space-x-6 space-x-8">
+        <div class="flex items-center justify-evenly w-full gap-3 md:justify-center md:gap-6">
             <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank"
                 aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
             <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank"
@@ -307,6 +303,8 @@
                     class="fab fa-youtube social-icon"></i></a>
             <a href="https://djyovan.bandcamp.com/" rel="noopener noreferrer" target="_blank" aria-label="Bandcamp"><i
                     class="fa-brands fa-bandcamp social-icon"></i></a>
+            <a href="https://open.spotify.com/artist/48sTmiJCQ2nRbgjxBj8Q1T" rel="noopener noreferrer" target="_blank"
+                aria-label="Spotify"><i class="fa-brands fa-spotify social-icon"></i></a>
         </div>
     </div>
 
@@ -320,17 +318,6 @@
                 linkUrl: "https://open.spotify.com/track/30gM7bTyup1W8aTJm0rlvh",
                 audioUrl: "https://p.scdn.co/mp3-preview/11ca5db9ee16d3f6a58b3512981c40c75ba48452",
                 title: "But You (Radio Edit) - Spotify Promo"
-            }
-        ];
-
-        /*
-        * Spotify track data array.
-        */
-        const spotifyTracks = [
-            {
-                iframeTitle: "Spotify Player - But You",
-                playerSource: "https://open.spotify.com/embed/track/30gM7bTyup1W8aTJm0rlvh?utm_source=generator",
-                songName: "But You"
             }
         ];
 
@@ -362,7 +349,7 @@
             img.src = card.imageUrl;
             img.alt = card.title;
             img.className = "w-full h-auto rounded-xl shadow-lg";
-            
+
             link.appendChild(img);
             wrapper.appendChild(link);
 
@@ -381,12 +368,12 @@
 
             if (card.audioUrl) {
                 const audio = new Audio(card.audioUrl);
-                
+
                 const button = document.createElement('button');
                 // Square button, bottom right, green
                 button.className = "absolute bottom-4 right-4 w-12 h-12 bg-[#1DB954] hover:bg-[#1ed760] text-white rounded shadow-lg flex items-center justify-center transition-all transform hover:scale-105 z-10 focus:outline-none cursor-pointer border-none";
                 button.ariaLabel = "Play preview";
-                
+
                 const icon = document.createElement('i');
                 icon.className = "fas fa-play text-xl";
                 button.appendChild(icon);
@@ -405,7 +392,7 @@
                                 // For this specific implementation, let's just play this one.
                             }
                         });
-                        
+
                         audio.play();
                         icon.className = "fas fa-pause text-xl";
                     } else {
@@ -420,7 +407,7 @@
 
                 wrapper.appendChild(button);
             }
-            
+
             return wrapper;
         }
 
@@ -434,25 +421,7 @@
             });
         }
 
-        // Helper to create a single Spotify embed element
-        function createSpotifyEmbed(track) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'w-full max-w-[350px]';
 
-            const iframe = document.createElement('iframe');
-            iframe.style.borderRadius = "12px";
-            iframe.src = track.playerSource;
-            iframe.width = "100%";
-            iframe.height = "352";
-            iframe.frameBorder = "0";
-            iframe.allowFullscreen = "";
-            iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-            iframe.loading = "lazy";
-            iframe.title = track.iframeTitle;
-
-            wrapper.appendChild(iframe);
-            return wrapper;
-        }
 
         // Helper to create a single Bandcamp embed element
         function createBandcampEmbed(track) {
@@ -480,15 +449,7 @@
             return wrapper;
         }
 
-        // Render all Spotify tracks into the grid
-        function renderSpotifyTracks() {
-            const grid = document.getElementById('spotify-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            spotifyTracks.forEach(track => {
-                grid.appendChild(createSpotifyEmbed(track));
-            });
-        }
+
 
         // Render all Bandcamp tracks into the grid
         function renderBandcampTracks() {
@@ -510,7 +471,7 @@
         // Initial render on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             renderSpotifyPromoCards();
-            renderSpotifyTracks();
+
             renderBandcampTracks();
         });
     </script>
