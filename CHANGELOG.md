@@ -8,6 +8,11 @@ Format:
   - Category: Description (files changed or important notes)
 ---
 
+## v0.1.7 — 2026-01-23 — Fast Lane Spotify Promo Card
+- Site: Added a new Spotify Promo Card for Fast Lane
+
+---
+
 ## v0.1.6 — 2025-12-05 — UI Polish for Social Icons
 
 - UI: Improved spacing of footer social icons on mobile for better alignment. (file: `index.html`)
