@@ -8,6 +8,11 @@ Format:
   - Category: Description (files changed or important notes)
 ---
 
+## v0.1.8 — 2026-01-25 — But You (Instrumental) Spotify Promo Card
+- Site: Added a new Spotify Promo Card for But You (Instrumental)
+
+---
+
 ## v0.1.7 — 2026-01-23 — Fast Lane Spotify Promo Card
 - Site: Added a new Spotify Promo Card for Fast Lane
 
