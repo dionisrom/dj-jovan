@@ -293,7 +293,7 @@
     <div class="follow-me">
         <p class="follow-text text-lg md:text-xl">FOLLOW ME</p>
         <div class="flex items-center justify-evenly w-full gap-3 md:justify-center md:gap-6">
-            <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" target="_blank"
+            <a href="https://www.instagram.com/djyovan_mtl" rel="noopener noreferrer" title="" target="_blank"
                 aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
             <a href="https://soundcloud.com/djyovan" rel="noopener noreferrer" target="_blank"
                 aria-label="SoundCloud"><i class="fab fa-soundcloud social-icon"></i></a>
@@ -313,6 +313,12 @@
         * Spotify Promo Cards data array.
         */
         const spotifyPromoCards = [
+            {
+                imageUrl: "https://i.scdn.co/image/ab67616d00001e020685d431cd1c898d695723c0",
+                linkUrl: "https://open.spotify.com/track/2GZ8ji58jjmLqi2DpZOKgw",
+                audioUrl: "https://p.scdn.co/mp3-preview/0df020feeae374d676e573805aa5781800535710",
+                title: "Afterglow - Spotify Promo"
+            },
             {
                 imageUrl: "https://i.scdn.co/image/ab67616d00001e02612a6b28d95f8160ff3d1c48",
                 linkUrl: "https://open.spotify.com/album/5cdSR13KTjfKH57zSbiZST?si=u7cU39baQ4ynCvoj2BX5qQ",
@@ -372,6 +378,7 @@
             spotifyLogoLink.rel = "noopener noreferrer";
             spotifyLogoLink.className = "absolute bottom-4 left-4 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all transform hover:scale-110 z-10 backdrop-blur-sm";
             spotifyLogoLink.setAttribute('aria-label', "Open in Spotify");
+            spotifyLogoLink.title = card.title;
 
             const spotifyIcon = document.createElement('i');
             spotifyIcon.className = "fab fa-spotify text-2xl text-[#1DB954]";
