@@ -9,6 +9,11 @@ Format:
 
 ---
 
+## v0.2.0 — 2026-03-31 — Added Clairity Analytics
+- Site: Added Microsoft Clarity analytics tracking to the site. (file: `index.html`)
+
+---
+
 ## v0.1.10 — 2026-03-31 — Azura Spotify Promo Card
 - Site: Added a new Spotify Promo Card for Azura
 
