@@ -6,6 +6,17 @@ Always the latest changes are on top, so the version history is in reverse chron
 Format:
 ## vX.Y.Z — YYYY-MM-DD — Short title
   - Category: Description (files changed or important notes)
+
+---
+
+## v0.1.10 — 2026-03-31 — Azura Spotify Promo Card
+- Site: Added a new Spotify Promo Card for Azura
+
+---
+
+## v0.1.9 — 2026-02-27 — Afterglow Spotify Promo Card
+- Site: Added a new Spotify Promo Card for Afterglow
+
 ---
 
 ## v0.1.8 — 2026-01-25 — But You (Instrumental) Spotify Promo Card
