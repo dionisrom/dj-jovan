@@ -9,9 +9,12 @@ Format:
 
 ---
 
+## v0.3.0 — 2026-06-22 — Added new section for playlists
+- Site: Added a new Spotify playlists section to the site and 2 playlist cards in it. (file: `index.html`)
+
+---
 ## v0.2.1 — 2026-06-10 — All My Heart Spotify Promo Card
 - Site: Added a new Spotify Promo Card for All My Heart
-
 ---
 
 ## v0.2.0 — 2026-03-31 — Added Clairity Analytics

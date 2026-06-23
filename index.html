@@ -285,7 +285,11 @@
                 <!-- Spotify Promo Cards will be rendered here by JavaScript -->
             </div>
 
-
+            <div id="spotify-playlist-grid"
+                class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center mb-10"
+                style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 95%;">
+                <!-- Spotify Playlist Cards will be rendered here by JavaScript -->
+            </div>
 
             <div id="bandcamp-grid"
                 class="mx-auto grid embeds-grid md:gap-10 sm:gap-2 justify-center justify-items-center"
@@ -355,6 +359,22 @@
                 linkUrl: "https://open.spotify.com/track/30gM7bTyup1W8aTJm0rlvh",
                 audioUrl: "https://p.scdn.co/mp3-preview/11ca5db9ee16d3f6a58b3512981c40c75ba48452",
                 title: "But You (Radio Edit) - Spotify Promo"
+            }
+        ];
+
+        /*
+        * Spotify Playlist Cards data array.
+        */
+        const spotifyPlaylistCards = [
+            {
+                imageUrl: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8448651c75b9e3286bfd32e8ca",
+                linkUrl: "https://open.spotify.com/playlist/1CcUQlGrdcTFySbFA7HX0w",
+                title: "DJ YOVAN - Essentials"
+            },
+            {
+                imageUrl: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84de6f373f3e4e1cc4b347c269",
+                linkUrl: "https://open.spotify.com/playlist/3xbB3R3yjhi7rsIAb1I99D",
+                title: "DJ YOVAN - The Complete Collection"
             }
         ];
 
@@ -459,6 +479,52 @@
             });
         }
 
+        // Helper to create a single Spotify Playlist Card embed element
+        function createSpotifyPlaylistEmbed(card) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'w-full max-w-[350px] relative group';
+
+            const link = document.createElement('a');
+            link.href = card.linkUrl;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.className = "block w-full h-auto hover:opacity-90 transition-opacity";
+
+            const img = document.createElement('img');
+            img.src = card.imageUrl;
+            img.alt = card.title;
+            img.className = "w-full h-auto rounded-xl shadow-lg";
+
+            link.appendChild(img);
+            wrapper.appendChild(link);
+
+            // Spotify Logo Link (Bottom Left)
+            const spotifyLogoLink = document.createElement('a');
+            spotifyLogoLink.href = card.linkUrl;
+            spotifyLogoLink.target = "_blank";
+            spotifyLogoLink.rel = "noopener noreferrer";
+            spotifyLogoLink.className = "absolute bottom-4 left-4 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all transform hover:scale-110 z-10 backdrop-blur-sm";
+            spotifyLogoLink.setAttribute('aria-label', "Open playlist in Spotify");
+            spotifyLogoLink.title = card.title;
+
+            const spotifyIcon = document.createElement('i');
+            spotifyIcon.className = "fab fa-spotify text-2xl text-[#1DB954]";
+            spotifyLogoLink.appendChild(spotifyIcon);
+            wrapper.appendChild(spotifyLogoLink);
+
+            return wrapper;
+        }
+
+        // Render all Spotify Playlist Cards into the grid
+        function renderSpotifyPlaylistCards() {
+            const grid = document.getElementById('spotify-playlist-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            spotifyPlaylistCards.forEach(card => {
+                grid.appendChild(createSpotifyPlaylistEmbed(card));
+            });
+        }
+
 
 
         // Helper to create a single Bandcamp embed element
@@ -514,7 +580,7 @@
         // Initial render on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             renderSpotifyPromoCards();
-
+            renderSpotifyPlaylistCards();
             renderBandcampTracks();
         });
     </script>
