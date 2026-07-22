@@ -8,6 +8,10 @@ Format:
   - Category: Description (files changed or important notes)
 
 ---
+## v0.3.1 — 2026-07-22 — Stay A Little Longer Promo Card
+- Site: Added a new Spotify Promo Card for Stay A Little Longer
+
+---
 
 ## v0.3.0 — 2026-06-22 — Added new section for playlists
 - Site: Added a new Spotify playlists section to the site and 2 playlist cards in it. (file: `index.html`)
